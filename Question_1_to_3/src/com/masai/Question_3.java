@@ -51,10 +51,14 @@ public class Question_3 {
 		/*
 		 *  TIME  : O(nlogn)
 		 *  Space : O(n)
-		 *  pros : Better then bubble sort and selection sort
-		 *  
-		 *  cons : Use Extra Space for Merging Operation 
-		 */
+		 *  Pros of Merge Sort:
+              1. Stable and consistent O(n log n) time complexity.
+              2. Suitable for large datasets.
+
+          Cons of Merge Sort:
+              1. High memory usage.
+              2. Slower for small datasets.
+		/*
 			
 
 
@@ -89,17 +93,117 @@ public class Question_3 {
 				
 			}
 			
-			/*
-			 *  TIME  : O(N Square)
-			 *  Space : O(1)
-			 *  pros : NOT USING ANY EXTRA SPACE
-			 *  
-			 *  cons : USE N Square TIme  
-			 */
+/*
+ * Pros of Bubble Sort:
+1. Simple to understand and implement.
+2. Minimal memory usage as it's in-place.
+
+Cons of Bubble Sort:
+1. Inefficient for large datasets.
+2. Lacks adaptivity, always the same number of operations.
+ */
 				
 			
 		}
+	
+	
+	
+	
+
+	
+	public static void main(String[] args) {
 		
+		int[] ae = {1,2,3,4,90,7,9,10,45};
+		int t = 9;
+		
+		System.out.println(twoPointers(ae, t));
+		
+		
+		
+	}
+	
+	
+	
+//	SEARCHING 
+	
+	
+//	1. BINARY SEARCH
+	
+	public static int binarySearch(int[] arr,int target) {
+		
+		int low =0;
+		int high = arr.length-1;
+		
+		while(low<=high) {
+		
+			int mid = low + (high-low)/2;
+			
+			if(arr[mid] == target) return mid;
+			
+			else if(arr[mid] < target)
+				low = mid+1;
+			
+			else
+				high = mid-1;
+			
+					
+			
+		}
+		
+		
+		
+		
+		return -1;
+	
+		
+		
+		
+		
+	}
+	
+	
+
+//	2. TWO POINTERS
+	
+		
+	
+
+	public static int twoPointers(int[] arr,int target) {
+		
+		int low = 0;
+		int high = arr.length-1;
+		
+		while(low <= high) {
+		
+			if(arr[low] == target)
+				return low;
+			
+			else if (arr[high] == target) 
+				return high;
+		
+			else if(high-low == 1 && arr[high-low] == target)
+				return high-low;
+			 
+			
+			low++;
+			high--;
+			
+			
+					
+			
+		}
+		
+		
+		
+		
+		return -1;
+	
+		
+		
+		
+		
+	}
+	
 	
 		
 		
@@ -113,4 +217,4 @@ public class Question_3 {
 	
 	
 	
-}
+

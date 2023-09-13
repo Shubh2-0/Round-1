@@ -1,0 +1,64 @@
+package com.masai.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.exception.UserException;
+import com.masai.model.User;
+import com.masai.repository.UserRepository;
+
+@Service
+public class UserService {
+
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	
+	
+	public User addUser(User user) throws UserException {
+		
+		Optional<User> optional = userRepository.findByEmail(user.getEmail());
+		
+		if(optional.isPresent()) throw new UserException("User Already Present with this Email "+user.getEmail());	
+		
+		return userRepository.save(user);
+		
+		
+	}
+	
+	
+	public User updateUser(User user, String email) throws UserException {
+		
+		
+	  Optional<User> optional = userRepository.findByEmail(user.getEmail());
+		
+		if(optional.isPresent()) throw new UserException("User not Present with this Email "+user.getEmail());	
+		
+       User user2 = optional.get();
+		
+       user2.setName(user.getName());
+       user2.setPassword(user.getPassword());
+       
+       
+		return userRepository.save(user2);
+		
+		
+	}
+	
+	
+	public User getUserByEmil(String email) throws UserException{
+		
+		userRepository.findByEmail(email).orElseThrow(() -> new UserException("no user found with that email " +email;))
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,14 @@
+package com.masai;
+
+public class factorial_recusrion {
+
+	public static int factorial(int n){
+
+		If(n==0 || n==1)
+		Return 1;
+
+		Return n * factorial(n-1);
+
+		}
+
+}

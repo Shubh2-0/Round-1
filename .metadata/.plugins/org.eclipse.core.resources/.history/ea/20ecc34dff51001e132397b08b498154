@@ -1,0 +1,57 @@
+package com.masai;
+
+public class Sorting_Algo {
+	
+	
+//	!. MERGE SORT
+	
+	
+	public static void ms(int[] arr, int si, int ei){
+
+		int mid = si + (ei-si)/2;
+
+		ms(arr,si,mid);
+		ms(arr,mid+1,ei);
+		Merger(arr,si,mid,ei);
+
+		}
+
+		public static void Merger(int[] arr,int si,int mid,int ei){
+
+		int[] merger = new int[ei-si+1];
+
+		int idx1 = si;
+		int indx2 = mid+1;
+		int x = 0;
+
+		While(idx1<= mid && idx2<=ei){
+
+		If(arr[idx1]<=arr[idx2])
+		Merger[x++] = arr[idx1++];
+
+		Else 
+		Merger[x++] = arr[idx2++];
+
+
+		}
+
+		While(idx1<=mid)
+		Merger[x++] = arr[idx1++];
+
+
+		While(idx2<=ei)
+		Merger[x++] = arr[idx2++];
+
+
+
+		For(int i=0,j=si;i<merger.length;i++,j++)
+		Arr[j] = merger[i];
+
+
+
+
+		}
+
+
+
+}
